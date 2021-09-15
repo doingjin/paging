@@ -21,14 +21,15 @@ public class PostDAO {
 		try {
 			// 전체
 			if((mid == null) || (mid.equals(""))) {
-				SQL = "SELECT * FROM POST WHERE ROWNUM <=? ORDER BY PDATE ASC";
+				SQL = "SELECT * FROM (SELECT * FROM POST ORDER BY PDATE DESC) WHERE ROWNUM <=?";
 				pstmt = conn.prepareStatement(SQL);
 				pstmt.setInt(1, cnt);
 				//System.out.println("if맞음?");
 			}
+			
 			// 특정 회원
 			else{
-				SQL = "SELECT * FROM POST WHERE MID=? AND ROWNUM <=? ORDER BY PDATE ASC";
+				SQL = "SELECT * FROM (SELECT * FROM POST ORDER BY PDATE DESC) WHERE MID=? AND ROWNUM <=?";
 				pstmt = conn.prepareStatement(SQL);
 				pstmt.setString(1,mid);
 				pstmt.setInt(2,cnt);
@@ -111,6 +112,25 @@ public class PostDAO {
 			res=true;
 		} catch (SQLException e) {
 			System.out.println("delPost()에서 출력");
+			e.printStackTrace();
+			return false;
+		} finally {
+			JNDI.disconnect(pstmt, conn);
+		}
+		return res;
+	}
+	
+	public boolean addFav(PostVO vo) {
+		boolean res=false;
+		conn=JNDI.connect();
+		String SQL="UPDATE POST SET FAVCNT=FAVCNT+1 WHERE PNUM=?";
+		try {
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setInt(1, vo.getPnum());
+			pstmt.executeUpdate();
+			res=true;
+		} catch (SQLException e) {
+			System.out.println("addFav()에서 출력");
 			e.printStackTrace();
 			return false;
 		} finally {

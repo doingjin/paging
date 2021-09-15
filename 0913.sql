@@ -1,10 +1,10 @@
 select * from all_tables;
 
 select * from mem;
-select * from post order by pdate desc;
+select * from post order by pdate asc;
 SELECT * FROM POST WHERE ROWNUM <=2 ORDER BY PDATE deSC;
 select * from comm;
-drop table post;
+drop table comm;
 
 create table mem(
 	mid varchar(15) primary key, --아이디
@@ -41,7 +41,6 @@ insert into comm values (2,1,'asd',sysdate,':)');
 insert into comm values (3,3,'asd',sysdate,':)');
 insert into comm values (4,3,'qwe',sysdate,'914!!');
 insert into comm values (5,4,'qwe',sysdate,'☁☁');
-
 
 
 

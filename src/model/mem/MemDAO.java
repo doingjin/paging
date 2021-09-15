@@ -7,29 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.common.JNDI;
+import model.post.CommVO;
 
 public class MemDAO {
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs;
 	
-	public boolean insert(MemVO vo) {
-		conn = JNDI.connect();
-		String sql = "insert into mem values(?,?,?)";
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getMid());
-			pstmt.setString(2, vo.getName());
-			pstmt.setString(3, vo.getMpw());
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		} finally {
-			JNDI.disconnect(pstmt, conn);
-		}
-		return true;
-	}
 	
 	public boolean login(MemVO vo) {
 		conn = JNDI.connect();
@@ -68,6 +52,25 @@ public class MemDAO {
 			return false;
 		}
 		finally {
+			JNDI.disconnect(pstmt, conn);
+		}
+		return res;
+	}
+	
+	public boolean delMem(MemVO vo) {
+		boolean res=false;
+		conn=JNDI.connect();
+		String SQL="DELETE FROM MEM WHERE MID=?";
+		try {
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1,vo.getMid());
+			pstmt.executeUpdate();
+			res=true;
+		} catch (SQLException e) {
+			System.out.println("delMem()에서 출력");
+			e.printStackTrace();
+			return false;
+		} finally {
 			JNDI.disconnect(pstmt, conn);
 		}
 		return res;

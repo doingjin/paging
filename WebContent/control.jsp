@@ -51,7 +51,8 @@
 		response.sendRedirect("control.jsp?action=main");
 	} else if(action.equals("newMem")){
 		if(mdao.newMem(mvo)){
-			response.sendRedirect("control.jsp?action=main");
+			out.println("<script>alert('회원가입이 완료되었습니다!');window.close();</script>");
+			//response.sendRedirect("control.jsp?action=main");
 		} else {
 			out.println("<script>alert('존재하는 아이디입니다!');history.go(-1);</script>");
 		}
@@ -61,11 +62,36 @@
 		} else {
 			out.println("<script>alert('글쓰기 실패!');history.go(-1);</script>");
 		}
+	} else if(action.equals("newComm")){
+		if(cdao.newComm(cvo)){
+			response.sendRedirect(url);
+		} else {
+			out.println("<script>alert('댓글쓰기 실패!');history.go(-1);</script>");
+		}
 	} else if(action.equals("delPost")){
 		if(pdao.delPost(pvo)){
 			response.sendRedirect(url);
 		} else {
-			out.println("<script>alert('삭제 실패!');history.go(-1);</script>");
+			out.println("<script>alert('글 삭제 실패!');history.go(-1);</script>");
+		}
+	} else if(action.equals("delComm")){
+		if(cdao.delComm(cvo)){
+			response.sendRedirect(url);
+		} else {
+			out.println("<script>alert('댓글 삭제 실패!');history.go(-1);</script>");
+		}
+	} else if(action.equals("delMem")){
+		if(mdao.delMem(mvo)){
+			session.invalidate();
+			response.sendRedirect("control.jsp?action=main");
+		} else {
+			out.println("<script>alert('회원 삭제 실패!');history.go(-1);</script>");
+		}
+	} else if(action.equals("addFav")){
+		if(pdao.addFav(pvo)){
+			response.sendRedirect(url);
+		} else {
+			out.println("<script>alert('좋아요 실패!');history.go(-1);</script>");
 		}
 	}
 %>

@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Create account</title>
+<script type="text/javascript">
+
+</script>
 </head>
 <body>
 <h1>Create account</h1>
