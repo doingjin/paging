@@ -10,3 +10,4 @@
        (이것도 float로)
        hr 색 바꿈
        Post 테이블에 안쓰는 컬럼인 comcnt 제거하고 PostVO에만 변수로 보관
+       main.jsp 안에 있던 내부 스타일 시트를 외부 스타일 시트로 바꿈
