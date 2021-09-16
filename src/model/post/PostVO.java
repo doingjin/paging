@@ -8,7 +8,7 @@ public class PostVO {
 	private String mid;
 	private String content;
 	private int favcnt;
-	private int comcnt;
+	private int comcnt; // DB에는 이 컴럼 존재 XX
 	private Date pdate;
 	
 	public int getPnum() {

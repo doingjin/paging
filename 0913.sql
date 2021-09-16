@@ -3,8 +3,8 @@ select * from all_tables;
 select * from mem;
 select * from post order by pdate asc;
 SELECT * FROM POST WHERE ROWNUM <=2 ORDER BY PDATE deSC;
-select * from comm;
-drop table comm;
+select * from mem;
+drop table mem;
 
 create table mem(
 	mid varchar(15) primary key, --아이디
@@ -19,13 +19,13 @@ create table post(
 	mid varchar(15) not null, --아이디
 	content varchar(100) not null, --내용
 	favcnt int default 0, --좋아요
-	comcnt int default 0, --댓글수
+	-- comcnt int default 0, --댓글수
 	pdate date default sysdate --작성일
 );
-insert into post values (1,'qwe','welcome welcome !',2,0,sysdate);
-insert into post values (2,'asd','second post here',1,0,sysdate);
-insert into post values (3,'qwe','today is 9/14',4,0,sysdate);
-insert into post values (4,'asd','☁☁☁☁☁🌤☁☁',1,0,sysdate);
+insert into post values (1,'qwe','welcome welcome !',2,sysdate);
+insert into post values (2,'asd','second post here',0,sysdate);
+insert into post values (3,'qwe','today is 9/14',0,sysdate);
+insert into post values (4,'asd','☁☁☁☁☁🌤☁☁',0,sysdate);
 select * from post where rownum<=2 order by pnum desc;
 
 create table comm(

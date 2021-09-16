@@ -5,13 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Create account</title>
-<script type="text/javascript">
-
-</script>
+<style type="text/css">
+#box{
+	display:block;
+	width:400px;
+	border:1px solid #FFD064;
+}
+</style>
 </head>
 <body>
-<h1>Create account</h1>
-<hr>
+<div align="center">
+<h1>😎Create account😎</h1>
+<div id="box"><br>
 	<form method="post" action="control.jsp">
 	<input type="hidden" name="action" value="newMem">
 		<table>
@@ -31,6 +36,8 @@
 		<td colspan="2" align="right"><input type="submit" value="SignUp"></td>
 		</tr>
 		</table>
-	</form>&emsp;
+	</form><br>
+	</div>
+</div>
 </body>
 </html>

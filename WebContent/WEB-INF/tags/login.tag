@@ -3,20 +3,22 @@
 
 <c:choose>
 	<c:when test="${empty seUser}">
-	<h3>${empty seUser}</h3>
+	<div class="right2">
 		<form method="post" action="control.jsp">
 		<input type="hidden" name="action" value="login">
 		<input type="hidden" name="cnt" value="${cnt}">
 			<input type="text" name="mid" placeholder="ID">
 			<input type="password" name="mpw" placeholder="PW">
-			<input type="submit" value="LogIn">
+			<input type="submit" value="LogIn">&emsp;<button onclick="newMem()">SignUp</button>
 		</form>
-		<button onclick="newMem()">SignUp</button>
+	</div>
 	</c:when>
 	<c:otherwise>
-		<span>${seUser}😎</span>&emsp;
+		<div class="right">
+		<span class="bold">${seUser}😎</span>&emsp;
 		<button onclick="location.href='control.jsp?action=main&selUser=${seUser}&cnt=${cnt}'">내 글</button>&emsp;
-		<button onclick="location.href='control.jsp?action=logout'">LogOut</button>
+		<button onclick="location.href='control.jsp?action=logout'">LogOut</button>&emsp;
 		<button onclick="del()">탈퇴</button>
+		</div>
 	</c:otherwise>
 </c:choose>

@@ -80,11 +80,40 @@ public class PostDAO {
 		return plist;
 	}
 	
+	public int getPostnum(String mid) {
+		int cnt=0;
+		conn=JNDI.connect();
+		String SQL;
+		try {
+			if(mid==""||mid==null) {
+				SQL="SELECT * FROM POST";
+				pstmt=conn.prepareStatement(SQL);
+				
+			} else {
+				SQL="SELECT * FROM POST WHERE MID=?";
+				pstmt=conn.prepareStatement(SQL);
+				pstmt.setString(1, mid);
+			}
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()) {
+				cnt++;
+			}
+			
+			rs.close();
+		} catch (SQLException e) {
+			System.out.println("getPostnum에서 출력");
+			e.printStackTrace();
+		} finally {
+			JNDI.disconnect(pstmt, conn);
+		}
+		return cnt;
+	}
+	
 	public boolean newPost(PostVO vo) {
 		boolean res=false;
 		conn=JNDI.connect();
-		String sql="INSERT INTO POST VALUES((SELECT NVL(MAX(PNUM),0)+1 FROM POST),?,?,0,0,SYSDATE)";
-		// PNUM MID CONTENT FAVCNT COMCNT PDATE
+		String sql="INSERT INTO POST VALUES((SELECT NVL(MAX(PNUM),0)+1 FROM POST),?,?,0,SYSDATE)";
+		// PNUM MID CONTENT FAVCNT PDATE
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getMid());
