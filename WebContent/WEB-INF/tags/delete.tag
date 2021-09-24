@@ -8,13 +8,13 @@
 <c:choose>
 	<c:when test="${type == 'post'}">
 		<c:if test="${id == seUser}">
-			<button onclick="location.href='control.jsp?action=delPost&pnum=${num}&cnt=${cnt}'">삭제</button>
+			<button onclick="location.href='delPost.do?pnum=${num}&cnt=${cnt}'">삭제</button>
 		</c:if>
 	</c:when>
 	
 	<c:when test="${type == 'comm'}">
 		<c:if test="${id == seUser}">
-			<button onclick="location.href='control.jsp?action=delComm&cnum=${num}&cnt=${cnt}'">댓글삭제</button>
+			<button onclick="location.href='delComm.do?cnum=${num}&cnt=${cnt}'">댓글삭제</button>
 		</c:if>
 	</c:when>
 </c:choose>

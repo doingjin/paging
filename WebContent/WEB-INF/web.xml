@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app>
-	<context-param>
-		<param-name>encoding</param-name>
-		<param-value>UTF-8</param-value>
-	</context-param>
+<web-app xmlns:web="http://xmlns.jcp.org/xml/ns/javaee">
+  <servlet>
+    <servlet-name>fc</servlet-name>
+    <servlet-class>control.common.FrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>fc</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <context-param>
+    <param-name>encoding</param-name>
+    <param-value>UTF-8</param-value>
+  </context-param>
 </web-app>

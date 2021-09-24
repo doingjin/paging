@@ -4,8 +4,7 @@
 <c:choose>
 	<c:when test="${empty seUser}">
 	<div class="right2">
-		<form method="post" action="control.jsp">
-		<input type="hidden" name="action" value="login">
+		<form method="post" action="login.do">
 		<input type="hidden" name="cnt" value="${cnt}">
 			<input type="text" name="mid" placeholder="ID">
 			<input type="password" name="mpw" placeholder="PW">
@@ -16,8 +15,8 @@
 	<c:otherwise>
 		<div class="right">
 		<span class="bold">${seUser}😎</span>&emsp;
-		<button onclick="location.href='control.jsp?action=main&selUser=${seUser}&cnt=${cnt}'">내 글</button>&emsp;
-		<button onclick="location.href='control.jsp?action=logout'">LogOut</button>&emsp;
+		<button onclick="location.href='main.do?selUser=${seUser}&cnt=${cnt}'">내 글</button>&emsp;
+		<button onclick="location.href='logout.do'">LogOut</button>&emsp;
 		<button onclick="del()">탈퇴</button>
 		</div>
 	</c:otherwise>

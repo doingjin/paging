@@ -9,8 +9,7 @@
 <c:choose>
 	<c:when test="${type == 'comm'}">
 		<c:if test="${!empty seUser}">
-				<form method="post" action="control.jsp">
-					<input type="hidden" name="action" value="newComm">
+				<form method="post" action="newComm.do">
 					<input type="hidden" name="cnt" value="${cnt}">
 					<input type="hidden" name="mid" value="${seUser}">
 					<input type="hidden" name="pnum" value="${pnum}">
@@ -26,8 +25,7 @@
 				<p style="font-style:italic">❗ 글쓰기는 로그인 후 이용 가능합니다 ❗ </p>
 			</c:when>
 			<c:otherwise>
-				<form method="post" action="control.jsp">
-					<input type="hidden" name="action" value="newPost">
+				<form method="post" action="newPost.do">
 					<input type="hidden" name="cnt" value="${cnt}">
 					<input type="hidden" name="mid" value="${seUser}">
 					<span>🔽글 작성하기🔽</span><br>

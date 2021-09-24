@@ -17,8 +17,7 @@
 <div align="center">
 <h1>😎Create account😎</h1>
 <div id="box"><br>
-	<form method="post" action="control.jsp">
-	<input type="hidden" name="action" value="newMem">
+	<form method="post" action="newMem.do">
 		<table>
 		<tr>
 			<td>ID</td>
